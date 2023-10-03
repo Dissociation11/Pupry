@@ -28,22 +28,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pupry.ui.screen.MainFrame
 import com.example.pupry.utils.SQLTest
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Box(modifier = Modifier.fillMaxSize()){
-                    Button(onClick = {
-                        Thread(Runnable {
-                            val st = SQLTest()
-                            st.connection()
-                        }).start()
-                    }) {
-                        Text("Test")
-                    }
-            }
+            MainFrame()
         }
     }
 }

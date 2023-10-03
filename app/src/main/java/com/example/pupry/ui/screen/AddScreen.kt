@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun AddScreen(modifier : Modifier){
+fun AddScreen(modifier : Modifier = Modifier){
     Box(modifier = modifier.fillMaxSize()){
         Text("Add",Modifier.align(Alignment.Center))
     }
@@ -19,5 +19,5 @@ fun AddScreen(modifier : Modifier){
 @Preview
 @Composable
 fun AddScreenPreview(){
-    AddScreen(Modifier)
+    AddScreen()
 }

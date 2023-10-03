@@ -53,6 +53,7 @@ android {
 dependencies {
 
     implementation("mysql:mysql-connector-java:5.1.47")
+
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
