@@ -2,8 +2,9 @@ package com.example.pupry.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.BottomAppBar
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -15,11 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.pupry.model.entity.BottomNavigationItem
-import com.example.pupry.ui.component.FirstColor
-import com.example.pupry.ui.component.LastColor
+import com.example.pupry.model.entity.ContentType
 import com.example.pupry.ui.component.MainBackground
 
 @Composable
@@ -33,7 +33,8 @@ fun MainFrame(){
 
         Box(modifier = Modifier
             .fillMaxSize()
-            .background(color = MainBackground)){
+            .background(color = MainBackground)
+            .padding(bottom = 80.dp)){
 
             when(selectedItem){
                 BottomNavigationItem.Home -> HomeScreen(modifier = Modifier)

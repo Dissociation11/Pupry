@@ -53,6 +53,9 @@ android {
 dependencies {
 
     implementation("mysql:mysql-connector-java:5.1.47")
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
