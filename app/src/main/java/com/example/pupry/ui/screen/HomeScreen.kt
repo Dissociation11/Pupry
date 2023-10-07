@@ -34,9 +34,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.pupry.R
+import com.example.pupry.compositionLocal.LocalSongViewModel
 import com.example.pupry.model.entity.ContentType
 import com.example.pupry.model.entity.SongEntity
 import com.example.pupry.ui.component.SearchText
@@ -53,7 +55,14 @@ import kotlinx.coroutines.selects.select
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(modifier : Modifier = Modifier , viewModel : MainViewModel = viewModel() , songViewModel : SongViewModel = androidx.lifecycle.viewmodel.compose.viewModel() , videoViewModel : VideoViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun HomeScreen(modifier : Modifier = Modifier ,
+               viewModel : MainViewModel = viewModel() ,
+               videoViewModel : VideoViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+               onNavigateToSongScreen:() -> Unit = {},
+               onNavigateToVideoScreen:() -> Unit = {}) {
+
+    val songViewModel = LocalSongViewModel.current
+
 
     Column(modifier = modifier.fillMaxSize()) {
 
@@ -99,11 +108,16 @@ fun HomeScreen(modifier : Modifier = Modifier , viewModel : MainViewModel = view
                     }
 
                     when(viewModel.selectedType){
-                        0 -> items(songViewModel.list){song ->
-                            SongItem(song)
+                        0 -> items(songViewModel.list){song->
+                            SongItem(song , Modifier.clickable {
+                                songViewModel.addSong(song.index)
+                                onNavigateToSongScreen()
+                            })
                         }
                         1 -> items(videoViewModel.list){video ->
-                            VideoItem(video)
+                            VideoItem(video , Modifier.clickable {
+                                onNavigateToVideoScreen.invoke()
+                            })
                         }
                     }
 

@@ -22,7 +22,7 @@ import coil.compose.AsyncImage
 import com.example.pupry.model.entity.VideoEntity
 
 @Composable
-fun VideoItem(video : VideoEntity){
+fun VideoItem(video : VideoEntity , modifier : Modifier = Modifier){
 
     var constraintSet = ConstraintSet{
 
@@ -60,7 +60,7 @@ fun VideoItem(video : VideoEntity){
         modifier = Modifier.fillMaxWidth()
             .padding(8.dp,4.dp)
             .clip(RoundedCornerShape(8.dp))
-            .background(VideoBackground)){
+            .background(VideoBackground).then(modifier)){
 
         AsyncImage(model = "https://img0.baidu.com/it/u=1986648698,1125087642&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
             contentDescription = null,
@@ -97,5 +97,5 @@ fun VideoItem(video : VideoEntity){
 @Preview
 @Composable
 fun VideoItemPreview(){
-    VideoItem(VideoEntity("title","type","duration","Test"))
+    VideoItem(VideoEntity("title","type","duration",    1))
 }

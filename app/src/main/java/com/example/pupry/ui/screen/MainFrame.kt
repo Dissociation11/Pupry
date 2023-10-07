@@ -1,10 +1,12 @@
 package com.example.pupry.ui.screen
 
+import android.webkit.PermissionRequest
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -21,9 +23,13 @@ import androidx.compose.ui.unit.dp
 import com.example.pupry.model.entity.BottomNavigationItem
 import com.example.pupry.model.entity.ContentType
 import com.example.pupry.ui.component.MainBackground
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.PermissionStatus
+import com.google.accompanist.permissions.rememberPermissionState
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun MainFrame(){
+fun MainFrame(onNavigateToSongScreen : ()->Unit = {},onNavigateToVideoScreen:() -> Unit = {},onNavigateToLogin:() -> Unit = {}){
 
     var selectedItem by remember { mutableStateOf(BottomNavigationItem.Home) }
     var selectedLabel by remember { mutableStateOf(selectedItem.title) }
@@ -37,9 +43,9 @@ fun MainFrame(){
             .padding(bottom = 80.dp)){
 
             when(selectedItem){
-                BottomNavigationItem.Home -> HomeScreen(modifier = Modifier)
+                BottomNavigationItem.Home -> HomeScreen(modifier = Modifier, onNavigateToSongScreen = onNavigateToSongScreen, onNavigateToVideoScreen = onNavigateToVideoScreen)
                 BottomNavigationItem.Add -> AddScreen(modifier = Modifier)
-                BottomNavigationItem.Account -> AccountScreen(modifier = Modifier)
+                BottomNavigationItem.Account -> AccountScreen(modifier = Modifier, onNavigateToLogin = onNavigateToLogin)
             }
 
         }
@@ -51,6 +57,11 @@ fun MainFrame(){
                     onClick = {
                         selectedItem = tab
                         selectedLabel = tab.title
+
+                        if(tab == BottomNavigationItem.Add){
+
+                        }
+
                     },
                     label = { Text(tab.title) },
                     icon = { Icon(tab.icon,tab.title) })

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pupry.ui.component.NavHostApp
 import com.example.pupry.ui.screen.MainFrame
 import com.example.pupry.utils.SQLTest
 
@@ -35,76 +36,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainFrame()
+            NavHostApp()
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
 fun previewTest() {
-    Box(modifier = Modifier.fillMaxSize()){
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.align(Alignment.Center)){
-
-            Image(painter = painterResource(id = R.drawable.ic_launcher_background),"testIcon")
-
-            Spacer(modifier = Modifier.height( 20.dp ))
-
-            TextField(
-                modifier = Modifier.clip(shape = CircleShape),
-                value = "",
-                onValueChange = { Unit },
-                leadingIcon = { Image(
-                    painter = painterResource(id = R.drawable.username),
-                    contentDescription = "userNmaeIcon",
-                    modifier = Modifier) },
-                placeholder = { Text("") },
-                textStyle = TextStyle(fontSize = 20.sp),
-                maxLines = 1
-            )
-
-            Spacer(modifier = Modifier.height( 8.dp ))
-
-            TextField(
-                modifier = Modifier.clip(shape = CircleShape),
-                value = "",
-                onValueChange = { Unit },
-                leadingIcon = { Image(
-                    painter = painterResource(id = R.drawable.password),
-                    contentDescription = "userNmaeIcon",
-                    modifier = Modifier) },
-                placeholder = { Text("") },
-                textStyle = TextStyle(fontSize = 20.sp),
-                maxLines = 1
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Row(){
-                Button(
-                    modifier = Modifier,
-                    onClick = {
-
-                    }){
-                    Text("登录")
-                }
-
-                Spacer(modifier = Modifier.width(20.dp))
-
-                Button(
-                        modifier = Modifier,
-                onClick = {
-
-                }){
-                Text("注册")
-                }
-            }
-
-
-            Spacer(modifier = Modifier.fillMaxSize(0.5f))
-
-        }
-    }
+    NavHostApp()
 }
