@@ -163,11 +163,9 @@ fun RegestScreen(onClose:()-> Unit = {},onNavigateToLogin:()->Unit = {}){
                     Spacer(modifier = Modifier.height(16.dp))
 
                     TextButton(onClick = {
-                        if(userName.isEmpty()){
-                        }else if(!password.equals(passwordAgain)){
-                        }else {
+
                             userViewModel.regest(context, userName, password,passwordAgain,onNavigateToLogin)
-                        }
+
                     }) {
                         Text("注册",
                             color = Color.White,
@@ -182,7 +180,7 @@ fun RegestScreen(onClose:()-> Unit = {},onNavigateToLogin:()->Unit = {}){
                     onNavigateToLogin.invoke()
                 }) {
                     Text("已有账号，前往登录",
-                        color = Color.Gray,
+                        color = Color.LightGray,
                         fontSize = 14.sp)
                 }
 

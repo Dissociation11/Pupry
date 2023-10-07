@@ -171,7 +171,7 @@ fun LoginScreen(onClose:() -> Unit = {},onNavigateToRegest:()->Unit={}){
                     onNavigateToRegest.invoke()
                 }) {
                     Text("还没有账号？点击立即注册",
-                        color = Color.Gray,
+                        color = Color.LightGray,
                         fontSize = 14.sp)
                 }
 

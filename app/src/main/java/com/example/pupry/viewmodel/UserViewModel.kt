@@ -22,10 +22,12 @@ class UserViewModel : ViewModel() {
     fun login(context: Context,onClose:() -> Unit = {},username: String,password: String){
 
         if(username.isEmpty()){
+            Toast.makeText(context,"用户名不可为空!",Toast.LENGTH_SHORT).show()
             return
         }
 
         if(password.isEmpty()){
+            Toast.makeText(context,"密码不可为空!",Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -35,12 +37,12 @@ class UserViewModel : ViewModel() {
         userDao.closeDB()
 
         if(user == null){
-            Log.v("err","user = null")
+            Toast.makeText(context,"用户名不存在!",Toast.LENGTH_SHORT).show()
             return
         }
 
         if(!user.passWord.equals(password)){
-            Log.v("err","password != passWord")
+            Toast.makeText(context,"密码错误!",Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -51,9 +53,36 @@ class UserViewModel : ViewModel() {
 
     fun regest(context:Context,username : String,password : String,passwordAgain : String,onNavigateToLogin:()->Unit = {}){
 
-        if(username.isEmpty()){ return }
-        if(password.isEmpty() || passwordAgain.isEmpty()){ return }
-        if(!password.equals(passwordAgain)){ return }
+        if(username.isEmpty()){
+            Toast.makeText(context,"用户名不可为空!",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(username.length < 4){
+            Toast.makeText(context,"用户名必须大于4位!",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(username.length > 25){
+            Toast.makeText(context,"用户名不得大于25位!",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(password.isEmpty() || passwordAgain.isEmpty()){
+            Toast.makeText(context,"密码不可为空!",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(password.length < 6){
+            Toast.makeText(context,"密码必须大于6位!",Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(password.length > 18){
+            Toast.makeText(context,"密码不得大于18位!",Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(!password.equals(passwordAgain)){
+            Toast.makeText(context,"两次输入密码不一致",Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val userDao = UserDao(context)
         userDao.openDB()
