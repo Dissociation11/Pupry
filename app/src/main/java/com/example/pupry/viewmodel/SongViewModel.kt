@@ -20,44 +20,86 @@ class SongViewModel : ViewModel() {
 
     var mediaPlayer: MediaPlayer? = null
 
-    var songInfo : SongEntity? = null
+    var songInfo: SongEntity? = null
 
-    fun addSong(index : Int){
+    fun addSong(index: Int) {
         songInfo = list[index]
 
     }
 
     @Composable
-    fun onCreate(context: Context){
+    fun onCreate(context: Context) {
 
         mediaPlayer = remember {
-            MediaPlayer.create(context,songInfo!!.id)
+            MediaPlayer.create(context, songInfo!!.id)
         }
 
     }
 
-    fun onStart(){
+    fun onStart() {
         mediaPlayer!!.start()
     }
 
-    fun onPause(){
+    fun onPause() {
         mediaPlayer!!.pause()
     }
 
-    fun onStop(){
+    fun onStop() {
         mediaPlayer!!.stop()
         mediaPlayer!!.release()
         songInfo = null
     }
 
     var list = listOf(
-        SongEntity(index = 0,id = R.raw.i_want_to_live,songName = "I Want To Live", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 1,id = R.raw.nightsong,songName = "Nightsong", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 2,id = R.raw.the_power_choral_version,songName = "The Power (Choral Version)", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 3,id = R.raw.the_power_orchestral_version,songName = "The Power (Orchestral Version)", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 4,id = R.raw.song_of_balduran,songName = "Song of Balduran", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 5,id = R.raw.raphaels_final_act,songName = "Raphael's Final Act", singer = "Baldur's Gate 3 OST"),
-        SongEntity(index = 6,id = R.raw.down_by_the_river,songName = "Down By The River", singer = "Baldur's Gate 3 OST"),
+        SongEntity(
+            index = 0,
+            id = R.raw.i_want_to_live,
+            songName = "I Want To Live",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 1,
+            id = R.raw.nightsong,
+            songName = "Nightsong",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 2,
+            id = R.raw.the_power_choral_version,
+            songName = "The Power (Choral Version)",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 3,
+            id = R.raw.the_power_orchestral_version,
+            songName = "The Power (Orchestral Version)",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 4,
+            id = R.raw.song_of_balduran,
+            songName = "Song of Balduran",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 5,
+            id = R.raw.raphaels_final_act,
+            songName = "Raphael's Final Act",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
+        SongEntity(
+            index = 6,
+            id = R.raw.down_by_the_river,
+            songName = "Down By The River",
+            singer = "Baldur's Gate 3 OST",
+            songUrl = R.drawable.baldur_s_gate_3
+        ),
     )
 
 }

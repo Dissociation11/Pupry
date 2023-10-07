@@ -43,7 +43,7 @@ fun Swiper(viewModel : MainViewModel){
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(7 / 3f),
+                .aspectRatio(16/9f),
             contentScale = ContentScale.Crop
         )
     }

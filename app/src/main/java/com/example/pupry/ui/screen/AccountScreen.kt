@@ -47,7 +47,7 @@ import com.example.pupry.ui.component.TopAppBar
 import com.example.pupry.ui.component.UserTabBackground
 
 @Composable
-fun AccountScreen(modifier : Modifier = Modifier,onNavigateToLogin:()->Unit = {}){
+fun AccountScreen(modifier : Modifier = Modifier,onNavigateToLogin:()->Unit = {},onNavigateToVersion:()-> Unit = {}){
 
     val userViewModel = LocalUserViewModel.current
 
@@ -111,7 +111,14 @@ fun AccountScreen(modifier : Modifier = Modifier,onNavigateToLogin:()->Unit = {}
             items(menus){menu ->
                 Column(modifier = Modifier.padding(horizontal = 4.dp)
                     .background(MenuItemBackground)
-                    .clip(RoundedCornerShape(8.dp))){
+                    .clip(RoundedCornerShape(8.dp))
+                    .clickable {
+
+                        if(menu.title == "版本信息"){
+                            onNavigateToVersion()
+                        }
+
+                    }){
                     Divider()
                     Row(verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(8.dp)){

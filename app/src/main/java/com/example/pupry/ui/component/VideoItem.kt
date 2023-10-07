@@ -62,7 +62,7 @@ fun VideoItem(video : VideoEntity , modifier : Modifier = Modifier){
             .clip(RoundedCornerShape(8.dp))
             .background(VideoBackground).then(modifier)){
 
-        AsyncImage(model = "https://img0.baidu.com/it/u=1986648698,1125087642&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
+        AsyncImage(model = video.ImageUri,
             contentDescription = null,
             modifier = Modifier.layoutId("cover")
                 .aspectRatio(16/9f).padding(4.dp))
@@ -97,5 +97,5 @@ fun VideoItem(video : VideoEntity , modifier : Modifier = Modifier){
 @Preview
 @Composable
 fun VideoItemPreview(){
-    VideoItem(VideoEntity("title","type","duration",    1))
+    VideoItem(VideoEntity())
 }

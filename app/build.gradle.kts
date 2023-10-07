@@ -52,15 +52,10 @@ android {
 }
 
 dependencies {
-
-    implementation("mysql:mysql-connector-java:5.1.47")
     implementation("com.tencent.liteav:LiteAVSDK_Player:latest.release")
 
     implementation("com.google.accompanist:accompanist-permissions:0.24.7-alpha")
 
-    /*implementation("androidx.room:room-compiler:2.5.2")
-    implementation("androidx.room:room-runtime:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")*/
 
     implementation("androidx.media3:media3-exoplayer:1.1.1")
     implementation("androidx.media3:media3-exoplayer-dash:1.1.1")

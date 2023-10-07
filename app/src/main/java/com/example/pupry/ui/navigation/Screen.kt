@@ -12,4 +12,6 @@ sealed class Screen(val  route : String){
 
     object RegestScreen : Screen("RegestScreen")
 
+    object  VersionInfoScreen : Screen("VersionInfoScreen")
+
 }

@@ -14,6 +14,7 @@ import com.example.pupry.ui.screen.LoginScreen
 import com.example.pupry.ui.screen.MainFrame
 import com.example.pupry.ui.screen.RegestScreen
 import com.example.pupry.ui.screen.SongScreen
+import com.example.pupry.ui.screen.VersionInfoScreen
 import com.example.pupry.ui.screen.VideoScreen
 import com.example.pupry.viewmodel.SongViewModel
 import com.example.pupry.viewmodel.UserViewModel
@@ -29,6 +30,7 @@ fun NavHostApp(){
 
         val userViewModel = LocalUserViewModel.current
         val songViewModel = LocalSongViewModel.current
+        val videoViewModel = LocalVideoViewModel.current
 
         NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
 
@@ -43,6 +45,8 @@ fun NavHostApp(){
                     }else{
                         navController.navigate(Screen.LoginScreen.route)
                     }
+                }, onNavigateToVersion = {
+                    navController.navigate(Screen.VersionInfoScreen.route)
                 })
             }
 
@@ -55,6 +59,7 @@ fun NavHostApp(){
 
             composable(Screen.VideoScreen.route) {
                 VideoScreen(onBack = {
+                    videoViewModel.onStop()
                     navController.popBackStack()
                 })
             }
@@ -74,6 +79,12 @@ fun NavHostApp(){
                 }, onNavigateToLogin = {
                     navController.popBackStack()
                     navController.navigate(Screen.LoginScreen.route)
+                })
+            }
+
+            composable(Screen.VersionInfoScreen.route){
+                VersionInfoScreen(onClose = {
+                    navController.popBackStack()
                 })
             }
 

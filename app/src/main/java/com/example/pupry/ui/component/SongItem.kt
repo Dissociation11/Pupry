@@ -38,7 +38,7 @@ fun SongItem(song : SongEntity , modifier:Modifier = Modifier){
 
             Spacer(modifier = Modifier.size(width = 8.dp,height = 0.dp))
 
-            Image(painter = painterResource(id = R.drawable.redprince),
+            Image(painter = painterResource(song.songUrl),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

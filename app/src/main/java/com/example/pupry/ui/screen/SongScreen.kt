@@ -45,7 +45,6 @@ import com.example.pupry.model.entity.SongEntity
 import com.example.pupry.ui.component.FirstColor
 import com.example.pupry.ui.component.LastColor
 import com.example.pupry.ui.component.TopAppBar
-import com.mysql.jdbc.Util.getPackageName
 
 @Composable
 fun SongScreen(onBack:()->Unit = {}){

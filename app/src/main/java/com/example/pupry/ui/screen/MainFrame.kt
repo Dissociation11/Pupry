@@ -29,7 +29,7 @@ import com.google.accompanist.permissions.rememberPermissionState
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun MainFrame(onNavigateToSongScreen : ()->Unit = {},onNavigateToVideoScreen:() -> Unit = {},onNavigateToLogin:() -> Unit = {}){
+fun MainFrame(onNavigateToSongScreen : ()->Unit = {},onNavigateToVideoScreen:() -> Unit = {},onNavigateToLogin:() -> Unit = {},onNavigateToVersion:()->Unit = {}){
 
     var selectedItem by remember { mutableStateOf(BottomNavigationItem.Home) }
     var selectedLabel by remember { mutableStateOf(selectedItem.title) }
@@ -45,7 +45,7 @@ fun MainFrame(onNavigateToSongScreen : ()->Unit = {},onNavigateToVideoScreen:() 
             when(selectedItem){
                 BottomNavigationItem.Home -> HomeScreen(modifier = Modifier, onNavigateToSongScreen = onNavigateToSongScreen, onNavigateToVideoScreen = onNavigateToVideoScreen)
                 BottomNavigationItem.Add -> AddScreen(modifier = Modifier)
-                BottomNavigationItem.Account -> AccountScreen(modifier = Modifier, onNavigateToLogin = onNavigateToLogin)
+                BottomNavigationItem.Account -> AccountScreen(modifier = Modifier, onNavigateToLogin = onNavigateToLogin, onNavigateToVersion = onNavigateToVersion)
             }
 
         }

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -39,6 +40,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.pupry.R
 import com.example.pupry.compositionLocal.LocalSongViewModel
+import com.example.pupry.compositionLocal.LocalVideoViewModel
 import com.example.pupry.model.entity.ContentType
 import com.example.pupry.model.entity.SongEntity
 import com.example.pupry.ui.component.SearchText
@@ -57,22 +59,24 @@ import kotlinx.coroutines.selects.select
 @Composable
 fun HomeScreen(modifier : Modifier = Modifier ,
                viewModel : MainViewModel = viewModel() ,
-               videoViewModel : VideoViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
                onNavigateToSongScreen:() -> Unit = {},
                onNavigateToVideoScreen:() -> Unit = {}) {
 
     val songViewModel = LocalSongViewModel.current
+    val videoViewModel = LocalVideoViewModel.current
 
 
     Column(modifier = modifier.fillMaxSize()) {
 
         TopAppBar {
 
-            Icon(imageVector = Icons.Default.AccountCircle,"",
-                modifier = Modifier
-                    .size(56.dp)
+            Image(painterResource(id = R.drawable.redprince),"",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.
+                    padding(12.dp)
+                    .size(44.dp)
+                    .clip(CircleShape)
                     .align(Alignment.CenterStart)
-                    .padding(start = 10.dp)
                     .clickable { Unit })
 
             SearchText(modifier = Modifier
@@ -116,6 +120,7 @@ fun HomeScreen(modifier : Modifier = Modifier ,
                         }
                         1 -> items(videoViewModel.list){video ->
                             VideoItem(video , Modifier.clickable {
+                                videoViewModel.addVideo(video)
                                 onNavigateToVideoScreen.invoke()
                             })
                         }
