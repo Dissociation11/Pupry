@@ -24,5 +24,4 @@ class MainViewModel : ViewModel() {
         SwiperEntity("https://img2.baidu.com/it/u=3219906533,2982923681&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"),
         SwiperEntity("https://imgs.aixifan.com/o_1cp6p00ol13ubbtto6fhno1c3n8j.jpg")
     )
-
 }
